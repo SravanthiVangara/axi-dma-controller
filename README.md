@@ -96,28 +96,6 @@ Waveform verifies:
 
 ---
 
-## Repository Structure
-axi-dma-controller-rtl
-│
-├── rtl
-│   ├── apb_block.v
-│   ├── async_fifo.v
-│   ├── dma_controller.v
-│   ├── dma_burst_engine.v
-│   └── dma_top.v
-│
-├── tb
-│   └── dma_top_tb.v
-│
-├── docs
-│   ├── dma_block_diagram.png
-│   ├── dma_dataflow.png
-│   └── waveform.png
-│
-└── README.md
-
----
-
 ## Modules Description
 
 ### 1. DMA Top
