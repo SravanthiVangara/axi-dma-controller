@@ -26,6 +26,8 @@ module apb_dma_config (
             SIZE <= 0;
             STATUS <= 0;
             dma_start <= 0;
+                transfer_size <= 0;
+
         end
         else begin
             dma_start <= 0;
