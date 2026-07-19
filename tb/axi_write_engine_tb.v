@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 
-module tb_dma_burst_engine;
+module tb_axi_write_engine;
 
 reg clk;
 reg rst;
@@ -18,7 +18,7 @@ wire [31:0] AWADDR;
 wire [31:0] WDATA;
 wire done;
 
-dma_burst_engine dut(
+axi_write_engine dut(
     .clk(clk),
     .rst(rst),
     .start(start),
@@ -66,7 +66,7 @@ end
 
 initial begin
     $dumpfile("burst.vcd");
-    $dumpvars(0, tb_dma_burst_engine);
+    $dumpvars(0, tb_axi_write_engine);
 end
 
 endmodule
