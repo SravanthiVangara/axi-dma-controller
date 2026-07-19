@@ -52,7 +52,7 @@ dma_controller ctrl (
     .dma_interrupt(dma_interrupt)
 );
 
-dma_burst_engine axi (
+axi_write_engine axi (
     .clk(clk),
     .rst(rst),
     .start(rd_en),
