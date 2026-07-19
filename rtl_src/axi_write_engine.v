@@ -48,12 +48,12 @@ always @(posedge clk or posedge rst) begin
         IDLE: begin
             done <= 0;
             if (start) begin
-                AWADDR <= addr_reg;
                 state <= SEND_ADDR;
             end
         end
 
         SEND_ADDR: begin
+               AWADDR  <= addr_reg;//Address updated every transaction.
             AWVALID <= 1;
             if (AWREADY) begin
                 AWVALID <= 0;
@@ -82,12 +82,12 @@ always @(posedge clk or posedge rst) begin
                     state <= SEND_ADDR;
             end
         end
-
-        FINISH: begin
-            done <= 1;
-            burst_count <= 0;
-            state <= IDLE;
-        end
+FINISH: begin
+    done <= 1;
+    burst_count <= 0;
+    addr_reg <= BASE_ADDR;
+    state <= IDLE;//Reset address for next transfer.
+end
 
         endcase
     end
