@@ -1,6 +1,6 @@
 
 # AXI DMA Controller RTL Design
-RTL implementation of an AXI DMA (Direct Memory Access) Controller in Verilog featuring APB-based configuration, control FSM, asynchronous FIFO buffering, and AXI4 burst write engine. The design demonstrates end-to-end DMA data flow from ADC input through FIFO buffering to AXI memory transactions with interrupt generation and full testbench verification.
+RTL implementation of an AXI DMA (Direct Memory Access) Controller in Verilog featuring APB-based configuration, control FSM, asynchronous FIFO buffering, and AXI write engine. The design demonstrates end-to-end DMA data flow from ADC input through FIFO buffering to AXI memory transactions with interrupt generation and full testbench verification.
 
 The DMA is configured using an APB interface and controlled by an internal FSM that manages the transfer flow and interrupt generation.
 
@@ -23,7 +23,7 @@ The design models a **real hardware data path used in embedded and FPGA-based sy
 
 ## System Architecture
 
-ADC → Async FIFO → DMA Controller → AXI Burst Engine → Memory
+ADC → Async FIFO → DMA Controller → AXI Write Engine → Memory
 
 APB Interface → DMA Configuration Registers
 
@@ -44,9 +44,9 @@ Asynchronous FIFO
 - Handles safe data movement between modules
 - Prevents overflow and underflow
 
-AXI Burst Engine
+AXI Write Engine
 - Performs AXI write transactions
-- Handles burst transfers to memory
+- Handles Write transfers to memory
 - Works with AXI ready/valid handshake protocol
 
 Interrupt Controller
@@ -77,7 +77,7 @@ Operational flow:
 3. ADC generates streaming data
 4. Data stored in asynchronous FIFO
 5. DMA reads FIFO data
-6. AXI burst write transfers to memory
+6. AXI  write transfers to memory
 7. Interrupt raised after completion
 
 ---
@@ -126,14 +126,14 @@ Finite State Machine controlling:
 • Transfer monitoring
 • Interrupt generation
 
-### 5. AXI Burst Engine
+### 5. AXI Write Engine
 Performs AXI4 write transactions:
 
 • Address phase
 • Data phase
 • Response handling
 
-Supports burst-based memory transfer.
+Supports Write-based memory transfer.
 
 ---
 
@@ -179,7 +179,7 @@ Features:
 3. ADC sends continuous data
 4. Data buffered in async FIFO
 5. DMA controller triggers AXI writes
-6. AXI engine performs burst transfers
+6. AXI engine performs write transfers
 7. Transfer completes
 8. DMA interrupt generated
 
