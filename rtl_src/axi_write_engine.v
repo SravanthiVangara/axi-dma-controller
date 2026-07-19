@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 
-module dma_burst_engine #(
+module axi_write_engine #(
     parameter BASE_ADDR = 32'h1000,
     parameter BURST_LEN = 8
 )(
