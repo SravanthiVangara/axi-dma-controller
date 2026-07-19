@@ -20,7 +20,11 @@ wire wr_en;
 wire rd_en;
 wire [31:0] fifo_out;
 
-async_fifo fifo (
+async_fifo #(
+   .DATA_WIDTH(32),
+   .ADDR_WIDTH(4)
+) fifo (
+    
     .wr_clk(clk),
     .wr_rst(rst),
     .wr_en(wr_en),
